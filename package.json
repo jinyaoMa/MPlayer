@@ -1,0 +1,40 @@
+{
+  "name": "mplayer",
+  "alias": "MPlayer",
+  "version": "1.0.0",
+  "description": "A HTML5 player",
+  "keywords": [
+    "html5",
+    "player"
+  ],
+  "private": true,
+  "scripts": {
+    "start": "npm run dev",
+    "build": "cross-env NODE_ENV=production webpack --config webpack/prod.conf.js --progress --display-error-details --colors",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack/dev.conf.js --watch --colors",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jinyaoMa",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.10.1",
+    "@babel/preset-env": "^7.10.1",
+    "art-template": "^4.13.2",
+    "art-template-loader": "^1.4.3",
+    "autoprefixer": "^9.8.0",
+    "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.5.3",
+    "cssnano": "^4.1.10",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.2.1",
+    "stylus-loader": "^3.0.2",
+    "svg-inline-loader": "^0.8.2",
+    "template-string-optimize-loader": "^3.0.0",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {}
+}
