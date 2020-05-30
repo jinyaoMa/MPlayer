@@ -72,8 +72,8 @@ module.exports = {
       test: /\.svg$/,
       loader: 'svg-inline-loader'
     }, {
-      test: /\.art$/,
-      loader: 'art-template-loader'
+      test: /\.ejs$/,
+      loader: 'ejs-loader'
     }]
   },
 

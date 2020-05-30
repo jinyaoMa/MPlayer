@@ -1,12 +1,21 @@
-import { D_COLOR, D_LOOP, D_ORDER, D_PRELOAD, D_AUDIO_TYPE, D_LRC_TYPE, D_DATA_TYPE, D_ERROR_TYPE, D_PLAYER_EVENT } from "./define";
-import { S_AUDIO, S_VOLUME, S_OPTION } from "./struct";
+import DEFINE, {
+  D_COLOR, D_LOOP, D_ORDER, D_PRELOAD, D_AUDIO_TYPE, D_LRC_TYPE,
+  D_DATA_TYPE, D_ERROR_TYPE, D_PLAYER_EVENT, D_ICON
+} from "./define";
+import STRUCT, {
+  S_SELECTOR, S_AUTOPLAY, S_THEME, S_LOOP, S_ORDER, S_PRELOAD,
+  S_VOLUME, S_AUDIO, S_MUTEX, S_LRC_TYPE, S_LIST_FOLDED,
+  S_LIST_MAX_HEIGHT, S_STORAGE_NAME, S_OPTION
+} from "./struct";
 import util from "./util";
 
 class MPlayer {
 
-  constructor(options = {}) {
-    util.checkArgument(document.querySelector(options.container), D_DATA_TYPE.ELEMENT, D_ERROR_TYPE.CONTAINER_NOT_FOUND, 'constructor(options.container)');
+  static get version() {
+    return MPLAYER_VERSION;
+  }
 
+  constructor(options = {}) {
     this.options = S_OPTION(options);
     this.lrc = {
       show: this.showLrc,
@@ -28,7 +37,7 @@ class MPlayer {
   }
 
   init() {
-    
+
   }
 
   play() {
@@ -134,16 +143,9 @@ class MPlayer {
   clearList() {
     console.log(this)
   }
+
 }
 
-MPlayer.version = MPLAYER_VERSION;
-Object.assign(MPlayer, {
-  D_COLOR, D_LOOP, D_ORDER, D_PRELOAD, D_AUDIO_TYPE, D_LRC_TYPE, D_DATA_TYPE, D_ERROR_TYPE, D_PLAYER_EVENT
-}, {
-  S_AUDIO, S_VOLUME, S_OPTION
-});
-MPlayer.toString = function () {
-  return '[MPlayer mplayer]';
-};
+Object.assign(MPlayer, DEFINE, STRUCT);
 
 export default MPlayer;
