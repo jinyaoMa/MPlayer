@@ -1,0 +1,11 @@
+<% audio.forEach((a, i) => { %>
+<div class="mplayer-list-item" data-index="<%= i %>">
+  <span class="mplayer-list-cur" style=<%= a.theme ? `"background-color: ${a.theme}"` : theme %>></span>
+  <span class="mplayer-list-index"><%= i + 1 %></span>
+  <span class="mplayer-list-title"><%= a.name %></span>
+  <span class="mplayer-list-author"><%= a.artist %></span>
+</div>
+<% }); %>
+<% if (audio.length === 0) { %>
+<div class="mplayer-list-empty">-- Playlist Here --</div>
+<% } %>

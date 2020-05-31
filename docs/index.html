@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+      overflow-y: scroll;
+    }
+
+    #MPlayer {
+      margin: 10vh auto;
+      width: 80%;
+      min-width: 800px;
+      max-width: 1024px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="MPlayer"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="MPlayer.min.js"></script>
+  <script>
+    $.get('https://api.i-meto.com/meting/api?server=netease&type=playlist&id=5042972369', data => {
+      window.mplayer = new MPlayer({
+        audio: data.map(a => {
+          return {
+            name: a.title,
+            artist: a.author,
+            url: a.url,
+            cover: a.pic,
+            lrc: a.lrc
+          };
+        })
+      })
+    }, 'json');
+  </script>
+</body>
+
+</html>

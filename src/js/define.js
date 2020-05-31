@@ -44,14 +44,11 @@ export const D_PRELOAD = Object.freeze({
 });
 
 export const D_AUDIO_TYPE = Object.freeze({
-  AUTO: 'auto',
-  HLS: 'hls',
-  NORMAL: 'normal'
+  AUTO: 'auto'
 });
 
 export const D_LRC_TYPE = Object.freeze({
   AUTO: 'auto',
-  HTML: 'html',
   JS: 'js',
   FILE: 'file'
 });
@@ -79,8 +76,6 @@ export const D_PLAYER_EVENT = Object.freeze({
   LIST_REMOVE: 'listremove',
   LIST_SWITCH: 'listswitch',
   LIST_CLEAR: 'listclear',
-  NOTICE_SHOW: 'noticeshow',
-  NOTICE_HIDE: 'noticehide',
   DESTROY: 'destroy',
   LRC_SHOW: 'lrcshow',
   LRC_HIDE: 'lrchide'

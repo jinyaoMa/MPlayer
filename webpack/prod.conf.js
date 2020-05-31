@@ -77,26 +77,15 @@ module.exports = {
     }]
   },
 
-  devServer: {
-    compress: true,
-    contentBase: path.resolve(__dirname, '..', 'demo'),
-    clientLogLevel: 'none',
-    quiet: false,
-    open: true,
-    historyApiFallback: {
-      disableDotRule: true,
-    },
-    watchOptions: {
-      ignored: /node_modules/,
-    },
-  },
-
   plugins: [
     new webpack.DefinePlugin({
       MPLAYER_ALIAS: `"${package.alias}"`,
       MPLAYER_VERSION: `"${package.version}"`,
       MPLAYER_AUTHOR: `"${package.author}"`
     }),
+    new webpack.ProvidePlugin({
+      _: "underscore"
+    })
   ],
 
   performance: {

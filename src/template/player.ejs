@@ -1,3 +1,73 @@
-<ol class="mplayer-list<% if (options.listFolded) { %> mplayer-list-hide<% } %>">
-  
-</ol>
+<div class="mplayer-body">
+  <div class="mplayer-pic"
+    style=<%= `"background-color: ${options.theme}"` %>>
+    <div class="mplayer-button mplayer-pause"><%= D_ICON.PLAY %></div>
+  </div>
+  <div class="mplayer-info">
+    <div class="mplayer-music">
+      <span class="mplayer-title">Title N/A</span>
+      <span class="mplayer-author">- Artist N/A</span>
+    </div>
+    <div class="mplayer-controller">
+      <div class="mplayer-bar-wrap">
+        <div class="mplayer-bar">
+          <div class="mplayer-loaded" style="width: 0"></div>
+          <div class="mplayer-played" style=<%= `"width: 0; background: ${options.theme}"` %>>
+            <span class="mplayer-thumb" style=<%= `"background: ${options.theme}"` %>>
+              <span class="mplayer-loading-icon"><%= D_ICON.LOADING %></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="mplayer-time">
+        <span class="mplayer-time-inner">
+          <span class="mplayer-ptime">00:00</span> / <span class="mplayer-dtime">00:00</span>
+        </span>
+        <span class="mplayer-icon mplayer-icon-back"><%= D_ICON.LEFT %></span>
+        <span class="mplayer-icon mplayer-icon-play"><%= D_ICON.PLAY %></span>
+        <span class="mplayer-icon mplayer-icon-forward"><%= D_ICON.RIGHT %></span>
+        <div class="mplayer-volume-wrap">
+          <span type="button" class="mplayer-icon mplayer-icon-volume-down"><%= D_ICON.VOLUME_DOWN %></span>
+          <div class="mplayer-volume-bar-wrap">
+            <div class="mplayer-volume-bar">
+              <div class="mplayer-volume" style=<%= `"background: ${options.theme}"` %>></div>
+            </div>
+          </div>
+        </div>
+        <span type="button" class="mplayer-icon mplayer-icon-order"><% switch (options.order) {
+          case D_ORDER.LIST:
+            %><%= D_ICON.ORDER_LIST %><%
+            break;
+          case D_ORDER.RANDOM:
+          %><%= D_ICON.ORDER_RANDOM %><%
+            break;
+        } %></span>
+        <span type="button" class="mplayer-icon mplayer-icon-loop"><% switch (options.loop) {
+          case D_LOOP.ALL:
+            %><%= D_ICON.LOOP_ALL %><%
+            break;
+          case D_LOOP.ONE:
+          %><%= D_ICON.LOOP_ONE %><%
+            break;
+          case D_LOOP.NONE:
+          %><%= D_ICON.LOOP_NONE %><%
+            break;
+        } %></span>
+        <span type="button" class="mplayer-icon mplayer-icon-lrc"><%= D_ICON.LRC %></span>
+        <span type="button" class="mplayer-icon mplayer-icon-menu"><%= D_ICON.MENU %></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mplayer-lrc">
+  <div class="mplayer-lrc-score" <%= `style="background-color: ${options.theme}"` %>></div>
+  <div class="mplayer-lrc-contents">
+    <div class="mplayer-lrc-empty">-- Lyrics Here --</div>
+  </div>
+</div>
+<div class="mplayer-list<% if (options.listFolded) { %> mplayer-list-hide<% } %>">
+  <%= T_LIST_ITEM({
+    theme: options.theme,
+    audio: options.audio
+  }) %>
+</div>

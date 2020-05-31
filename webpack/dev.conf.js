@@ -95,6 +95,9 @@ module.exports = {
       MPLAYER_VERSION: `"${package.version}"`,
       MPLAYER_AUTHOR: `"${package.author}"`
     }),
+    new webpack.ProvidePlugin({
+      _: "underscore"
+    })
   ],
 
   performance: {

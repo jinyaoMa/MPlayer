@@ -1,8 +1,10 @@
-import { D_COLOR, D_LOOP, D_ORDER, D_PRELOAD, D_AUDIO_TYPE, D_LRC_TYPE } from "./define";
+import { D_COLOR, D_LOOP, D_ORDER, D_PRELOAD, D_AUDIO_TYPE, D_LRC_TYPE, D_ICON } from "./define";
 
 export const S_SELECTOR = selector => {
   let result = document.querySelector(selector);
-  if (!result) {
+  if (result) {
+    result = selector;
+  } else {
     result = 'body';
   }
   return result;
@@ -80,10 +82,6 @@ export const S_AUDIO = audios => {
   return result;
 };
 
-export const S_MUTEX = mutex => {
-  return !!mutex;
-};
-
 export const S_LRC_TYPE = lrcType => {
   let result = D_LRC_TYPE.AUTO;
   if (Object.values(D_LRC_TYPE).includes(lrcType)) {
@@ -96,20 +94,12 @@ export const S_LIST_FOLDED = listFolded => {
   return !!listFolded;
 };
 
-export const S_LIST_MAX_HEIGHT = listMaxHeight => {
-  let result = 0;
-  if (listMaxHeight > result) {
-    result = listMaxHeight;
-  }
-  return result;
-};
-
 export const S_STORAGE_NAME = storageName => {
   let result = storageName && storageName.trim && storageName.trim();
   return result !== '' ? result : `${MPLAYER_ALIAS}-Settings`;
 };
 
-export const S_OPTION = option => {
+export const S_OPTIONS = option => {
   return {
     selector: S_SELECTOR(option.selector || `#${MPLAYER_ALIAS}`),
     autoplay: S_AUTOPLAY(option.autoplay || false),
@@ -119,16 +109,29 @@ export const S_OPTION = option => {
     preload: S_PRELOAD(option.preload || D_PRELOAD.NONE),
     volume: S_VOLUME(option.volume || 0.7),
     audio: S_AUDIO(option.audio || []),
-    mutex: S_MUTEX(option.mutex === false ? false : true),
     lrcType: S_LRC_TYPE(option.lrcType || D_LRC_TYPE.AUTO),
     listFolded: S_LIST_FOLDED(option.listFolded || false),
-    listMaxHeight: S_LIST_MAX_HEIGHT(option.listMaxHeight || 0),
     storageName: S_STORAGE_NAME(option.storageName || `${MPLAYER_ALIAS}-Settings`)
+  };
+};
+
+export const S_PLAYER = option => {
+  return Object.assign(option, {
+    options: S_OPTIONS(option.options),
+    cover: option.cover || null,
+    D_ICON, D_ORDER, D_LOOP
+  });
+};
+
+export const S_LIST_ITEM = option => {
+  return {
+    theme: S_THEME(option.theme),
+    audio: S_AUDIO(option.audio)
   };
 };
 
 export default {
   S_SELECTOR, S_AUTOPLAY, S_THEME, S_LOOP, S_ORDER, S_PRELOAD,
-  S_VOLUME, S_AUDIO, S_MUTEX, S_LRC_TYPE, S_LIST_FOLDED,
-  S_LIST_MAX_HEIGHT, S_STORAGE_NAME, S_OPTION
-}
+  S_VOLUME, S_AUDIO, S_LRC_TYPE, S_LIST_FOLDED,
+  S_STORAGE_NAME, S_OPTIONS, S_PLAYER, S_LIST_ITEM
+};

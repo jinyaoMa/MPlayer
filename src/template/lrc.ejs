@@ -1,0 +1,3 @@
+<% lyrics.forEach((l, i) => { %>
+<p class="<%= i === 0 ? 'mplayer-lrc-current' : '' %>" data-time="<%= l[0] %>"><%= l[1] %></p>
+<% }); %>
