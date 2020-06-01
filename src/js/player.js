@@ -244,7 +244,9 @@ class MPlayer {
 
   bindAudio() {
     this.audio.onerror = e => {
-      window.setTimeout(this.audio.onended, 2048);
+      if (!this.audio.paused) {
+        window.setTimeout(this.audio.onended, 2048);
+      }
     };
 
     this.audio.onplay = e => {
