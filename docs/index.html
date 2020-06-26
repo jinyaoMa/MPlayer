@@ -14,14 +14,33 @@
       padding: 0;
       background-color: #f1f1f1;
       overflow-y: scroll;
+      font-size: 16px;
     }
 
     #MPlayer {
       margin: 10vh auto;
-      width: 80%;
-      min-width: 800px;
-      max-width: 1024px;
+      width: 280px;
+      background-color: white;
+      box-shadow: 0 0 0.5rem 0.25rem #333;
+      border-radius: 1rem;
+      overflow: hidden;
+      position: relative;
+      padding-top: 3.25rem;
     }
+
+    #MPlayer:after {
+      content: '◉';
+      color: #333;
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-align: center;
+      line-height: 1.75 !important;
+      width: 3rem;
+      font-size: 1.75rem;
+      border-radius: 1rem;
+    }
+    
   </style>
 </head>
 

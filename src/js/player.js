@@ -337,7 +337,7 @@ class MPlayer {
             if (current !== target) {
               current && current.classList.remove('mplayer-lrc-current');
               target && target.classList.add('mplayer-lrc-current');
-              this._doms.lrcContents.style.transform = `translateY(${target.offsetTop * -1 + 20}px)`;
+              this._doms.lrcContents.style.transform = `translateY(${target.offsetTop * -1 + 4}px)`;
             }
             break;
           }
