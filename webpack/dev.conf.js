@@ -77,7 +77,7 @@ module.exports = {
 
   devServer: {
     compress: true,
-    contentBase: path.resolve(__dirname, '..', 'demo'),
+    contentBase: path.resolve(__dirname, '..', 'docs'),
     clientLogLevel: 'none',
     quiet: false,
     open: true,
